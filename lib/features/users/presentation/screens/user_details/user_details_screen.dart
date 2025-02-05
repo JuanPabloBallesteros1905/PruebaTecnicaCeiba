@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:users/core/utils/textos.dart';
+
 import 'package:users/features/users/presentation/screens/user_details/bloc/users_details_bloc.dart';
+import 'package:users/features/users/presentation/widgets/index.dart';
 
 String _userId = '';
 
@@ -47,21 +48,38 @@ class _UserDetailsState extends State<UserDetails> {
               final user = state.posts;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ListView.builder(
-                  itemCount: state.posts.length,
-                  itemBuilder: (context, index) {
-                    final item = state.posts[index];
-                    return  SocialPostCard(
-                      title: item.title,
-                      body: item.body,
-                      nameUsuario: 'no',
-                      postId: item.id.toString(),
-                    );
-                  },
-                )
-                
-                
-                 
+                child: Column(
+                  spacing: 16,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomCardUser(
+                        name: arguments['name'],
+                        phone: arguments['phone'],
+                        email: arguments['email'],
+                        onpress: () {}),
+                    Text(
+                      ' Posts de usuario',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 500,
+                      child: ListView.builder(
+                        itemCount: state.posts.length,
+                        itemBuilder: (context, index) {
+                          final item = state.posts[index];
+                          return SocialPostCard(
+                            title: item.title,
+                            body: item.body,
+                            nameUsuario: 'no',
+                            postId: item.id.toString(),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               );
             }
 
@@ -73,20 +91,19 @@ class _UserDetailsState extends State<UserDetails> {
   }
 }
 
-
-
 // Versión Estilo Red Social
 class SocialPostCard extends StatelessWidget {
-
   final String nameUsuario;
   final String title;
   final String postId;
   final String body;
 
-  const SocialPostCard({super.key, required this.nameUsuario, required this.title, required this.postId, required this.body});
-  
-
-  
+  const SocialPostCard(
+      {super.key,
+      required this.nameUsuario,
+      required this.title,
+      required this.postId,
+      required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +121,7 @@ class SocialPostCard extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: Colors.blue[700],
               child: Text(
-                nameUsuario.substring(0,1),
+                nameUsuario.substring(0, 1),
                 style: const TextStyle(color: Colors.white),
               ),
             ),
@@ -125,7 +142,7 @@ class SocialPostCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                title,
+                  title,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

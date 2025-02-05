@@ -145,7 +145,9 @@ class _UsersScreenState extends State<UsersScreen> {
                                     onpress: (){
                                       Navigator.pushNamed(context, 'userDetails', arguments: {
                                         "userId" : item.id.toString(),
-                                        "name" : item.name
+                                        "name" : item.name,
+                                        "phone": item.phone,
+                                        "email": item.email
                                       });
                                     },
                                   );
