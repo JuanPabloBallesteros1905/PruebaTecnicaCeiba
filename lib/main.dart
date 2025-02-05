@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:users/core/utils/colors.dart';
-import 'package:users/features/presentation/screens/index.dart';
+import 'package:users/features/users/presentation/screens/index.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: 'users',
       routes: {
-        "users": (_) => const UsersScreen(),
-        "userDetails": (_) => const UserDetails(),
+        "users": (_) =>   UsersScreen(),
+        "userDetails": (_) =>   UserDetails(),
       },
     );
   }

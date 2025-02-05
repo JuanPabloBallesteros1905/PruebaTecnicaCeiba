@@ -1,17 +1,19 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:users/core/utils/colors.dart';
 
 class CustomCardUser extends StatelessWidget {
-
   final String name;
   final String phone;
   final String email;
-  
 
+  final Function onpress;
 
-  const CustomCardUser({super.key, required this.name, required this.phone, required this.email});
+  const CustomCardUser(
+      {super.key,
+      required this.name,
+      required this.phone,
+      required this.email,
+      required this.onpress});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class CustomCardUser extends StatelessWidget {
                 Spacer(),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, 'userDetails');
+                      onpress();
                     },
                     child: Text(
                       'Ver Publicaciones',
@@ -60,7 +62,6 @@ class CustomCardUser extends StatelessWidget {
     );
   }
 }
-
 
 class CustomRow extends StatelessWidget {
   final IconData icon;
