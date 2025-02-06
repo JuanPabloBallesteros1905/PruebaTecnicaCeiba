@@ -1,18 +1,30 @@
 part of 'users_bloc.dart';
 
-sealed class UsersState extends Equatable {
+abstract class UsersState extends Equatable {
   const UsersState();
-
+  
   @override
   List<Object> get props => [];
 }
 
-final class UsersInitial extends UsersState {}
+class UsersInitial extends UsersState {}
 
 class UsersLoading extends UsersState {}
 
-class usersDataLoaded extends UsersState {
+class UsersDataLoaded extends UsersState {
   final List<UserModelResponse> users;
 
-  const usersDataLoaded({required this.users});
+  const UsersDataLoaded({required this.users});
+
+  @override
+  List<Object> get props => [users];
+}
+
+class UsersError extends UsersState {
+  final String message;
+
+  const UsersError({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
