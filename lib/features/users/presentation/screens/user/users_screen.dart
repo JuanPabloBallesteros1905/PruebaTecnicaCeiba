@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:users/core/utils/textos.dart';
-import 'package:users/features/users/data/models/user_model_response.dart';
+import 'package:users/features/users/data/mappers/user_model_response.dart';
 import 'package:users/features/users/presentation/screens/user/bloc/users_bloc.dart';
 import 'package:users/features/users/presentation/widgets/index.dart';
 
@@ -139,6 +139,7 @@ class _UsersScreenState extends State<UsersScreen> {
                                 itemBuilder: (context, index) {
                                   final item = filteredUsers[index];
                                   return CustomCardUser(
+                                    showSeePots: true,
                                     name: item.name,
                                     phone: item.phone,
                                     email: item.email,

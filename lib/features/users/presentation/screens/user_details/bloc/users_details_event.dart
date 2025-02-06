@@ -12,3 +12,9 @@ class GetusersPosts extends UsersDetailsEvent {
 
   GetusersPosts({required this.userId});
 }
+
+class GetComments extends UsersDetailsEvent {
+  final String postId;
+
+  const GetComments({required this.postId});
+}

@@ -5,6 +5,7 @@ class CustomCardUser extends StatelessWidget {
   final String name;
   final String phone;
   final String email;
+  final bool showSeePots;
 
   final Function onpress;
 
@@ -13,7 +14,7 @@ class CustomCardUser extends StatelessWidget {
       required this.name,
       required this.phone,
       required this.email,
-      required this.onpress});
+      required this.onpress, required this.showSeePots});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,9 @@ class CustomCardUser extends StatelessWidget {
               icon: Icons.mail,
               text: email,
             ),
-            Row(
+            
+            
+           showSeePots ?   Row(
               children: [
                 Spacer(),
                 TextButton(
@@ -55,7 +58,7 @@ class CustomCardUser extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     )),
               ],
-            )
+            ) : Container()
           ],
         ),
       ),
